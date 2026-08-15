@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kiosco Belleza — Revistas de belleza & moda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --vellum:#F7F1EA;
+    --vellum-dim:#EFE7DC;
+    --ink:#221D1A;
+    --ink-soft:#5B534C;
+    --lacquer:#B23A4A;
+    --lacquer-dark:#8E2E3B;
+    --gold:#A9803D;
+    --blush:#EFDAD3;
+    --plum:#3E2632;
+    --swatch-1:#B23A4A;
+    --swatch-2:#C68B59;
+    --swatch-3:#8A9B7D;
+    --swatch-4:#7C93A8;
+    --swatch-5:#A9803D;
+    --swatch-6:#8E5A6B;
+    --radius:2px;
+    --max:1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--vellum);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.55;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    margin:0;
+    color:var(--ink);
+  }
+
+  a{color:inherit;text-decoration:none;}
+  ul,ol{margin:0;padding:0;list-style:none;}
+
+  a:focus-visible,
+  button:focus-visible{
+    outline:2px solid var(--lacquer);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  .eyebrow{
+    display:inline-block;
+    font-family:'Inter',sans-serif;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+
+  /* ---------- HEADER ---------- */
+  .site-header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(247,241,234,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(34,29,26,0.12);
+  }
+  .header-inner{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:16px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+  }
+  .masthead-mini{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:20px;
+    letter-spacing:0.02em;
+  }
+  .main-nav{
+    display:flex;
+    gap:28px;
+  }
+  .main-nav a{
+    font-size:14px;
+    font-weight:500;
+    color:var(--ink-soft);
+    padding-bottom:2px;
+    border-bottom:1px solid transparent;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .main-nav a:hover{
+    color:var(--lacquer);
+    border-color:var(--lacquer);
+  }
+  .nav-cta{
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.04em;
+    padding:9px 16px;
+    border:1px solid var(--ink);
+    border-radius:var(--radius);
+    white-space:nowrap;
+    transition:background .2s ease, color .2s ease;
+  }
+  .nav-cta:hover{
+    background:var(--ink);
+    color:var(--vellum);
+  }
+  .nav-toggle{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:6px;
+  }
+  .nav-toggle span{
+    width:22px;
+    height:2px;
+    background:var(--ink);
+    display:block;
+  }
+
+  /* ---------- COVER / HERO ---------- */
+  .cover{
+    max-width:var(--max);
+    margin:28px auto 0;
+    padding:0 24px 48px;
+  }
+  .cover-frame{
+    border:1px solid var(--ink);
+    padding:22px 26px 32px;
+    position:relative;
+  }
+  .cover-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    padding-bottom:22px;
+    border-bottom:1px solid rgba(34,29,26,0.15);
+    margin-bottom:28px;
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .cover-top span{display:block;}
+  .cover-top .price-corner{
+    text-align:right;
+  }
+  .cover-body{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    gap:32px;
+    align-items:center;
+  }
+  .cover-lines{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .cover-lines.left{text-align:left;}
+  .cover-lines.right{text-align:right;}
+  .cover-line{
+    font-family:'Fraunces',serif;
+    font-size:clamp(14px,1.6vw,19px);
+    font-weight:500;
+    line-height:1.25;
+  }
+  .cover-line small{
+    display:block;
+    font-family:'Inter',sans-serif;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--lacquer);
+    margin-bottom:4px;
+  }
+  .cover-center{
+    text-align:center;
+  }
+  .masthead{
+    font-size:clamp(48px,8vw,96px);
+    font-weight:700;
+    letter-spacing:-0.01em;
+    line-height:0.95;
+    margin-bottom:10px;
+  }
+  .masthead em{
+    font-style:italic;
+    color:var(--lacquer);
+  }
+  .cover-tagline{
+    font-size:15px;
+    color:var(--ink-soft);
+    max-width:340px;
+    margin:0 auto 26px;
+  }
+  .cover-blob{
+    width:170px;
+    height:170px;
+    margin:0 auto 26px;
+    border-radius:50%;
+    background:radial-gradient(circle at 32% 28%, #fff2, transparent 55%),
+               conic-gradient(from 210deg, var(--lacquer), var(--swatch-2), var(--gold), var(--lacquer));
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .cover-blob::after{
+    content:'NUEVO NÚMERO';
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:0.12em;
+    background:var(--ink);
+    color:var(--vellum);
+    padding:7px 12px;
+    border-radius:999px;
+    transform:rotate(-8deg);
+  }
+  .cover-ctas{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-block;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.02em;
+    padding:13px 24px;
+    border-radius:var(--radius);
+    border:1px solid var(--ink);
+    transition:transform .15s ease, background .2s ease, color .2s ease;
+  }
+  .btn-primary{
+    background:var(--lacquer);
+    border-color:var(--lacquer);
+    color:var(--vellum);
+  }
+  .btn-primary:hover{background:var(--lacquer-dark); transform:translateY(-1px);}
+  .btn-secondary{
+    background:transparent;
+    color:var(--ink);
+  }
+  .btn-secondary:hover{background:var(--ink); color:var(--vellum); transform:translateY(-1px);}
+
+  .cover-bottom{
+    margin-top:34px;
+    padding-top:22px;
+    border-top:1px solid rgba(34,29,26,0.15);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .barcode{
+    display:flex;
+    align-items:flex-end;
+    gap:2px;
+    height:34px;
+  }
+  .barcode span{
+    display:block;
+    width:2px;
+    background:var(--ink);
+  }
+  .barcode-label{
+    font-size:10px;
+    letter-spacing:0.14em;
+    color:var(--ink-soft);
+    margin-top:4px;
+  }
+
+  /* ---------- SECTION HEAD (shared) ---------- */
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:36px;
+    padding-bottom:18px;
+    border-bottom:1px solid rgba(34,29,26,0.15);
+  }
+  .section-head h2{
+    font-size:clamp(28px,4vw,42px);
+    font-weight:600;
+    margin-top:6px;
+  }
+  .section-note{
+    font-size:14px;
+    color:var(--ink-soft);
+    max-width:280px;
+    text-align:right;
+  }
+
+  /* ---------- CATALOG ---------- */
+  .indice{
+    padding:64px 0;
+  }
+  .product-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  .product-card{
+    background:var(--vellum-dim);
+    border:1px solid rgba(34,29,26,0.12);
+  }
+  .product-cover{
+    aspect-ratio:3/4;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:16px;
+    color:var(--vellum);
+    overflow:hidden;
+  }
+  .product-cover.s1{background:linear-gradient(155deg, var(--swatch-1), #6f2430);}
+  .product-cover.s2{background:linear-gradient(155deg, var(--swatch-2), #8a5c34);}
+  .product-cover.s3{background:linear-gradient(155deg, var(--swatch-3), #566249);}
+  .product-cover.s4{background:linear-gradient(155deg, var(--swatch-4), #4c5f71);}
+  .product-cover.s5{background:linear-gradient(155deg, var(--swatch-5), #7a5f2a);}
+  .product-cover.s6{background:linear-gradient(155deg, var(--swatch-6), #5c384a);}
+  .product-tag{
+    align-self:flex-start;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    background:rgba(255,255,255,0.18);
+    padding:5px 10px;
+    border-radius:999px;
+  }
+  .product-issue{
+    font-family:'Fraunces',serif;
+    font-size:15px;
+    font-weight:600;
+    line-height:1.3;
+  }
+  .product-issue span{
+    display:block;
+    font-family:'Inter',sans-serif;
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    opacity:0.8;
+    margin-bottom:6px;
+  }
+  .product-info{
+    padding:16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .product-price{
+    font-family:'Fraunces',serif;
+    font-size:18px;
+    font-weight:600;
+  }
+  .product-buy{
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.04em;
+    color:var(--lacquer);
+    border-bottom:1px solid var(--lacquer);
+  }
+  .product-card:hover .product-buy{color:var(--ink); border-color:var(--ink);}
+
+  /* ---------- STEPS ---------- */
+  .steps{
+    padding:64px 0;
+    background:var(--blush);
+  }
+  .step-list{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  .step{
+    padding:26px 22px;
+    background:var(--vellum);
+    border:1px solid rgba(34,29,26,0.1);
+  }
+  .step-num{
+    font-family:'Fraunces',serif;
+    font-size:34px;
+    font-weight:600;
+    color:var(--lacquer);
+    display:block;
+    margin-bottom:12px;
+  }
+  .step h3{
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .step p{
+    font-size:14px;
+    color:var(--ink-soft);
+    margin:0;
+  }
+
+  /* ---------- ABOUT / MASTHEAD CREDITS ---------- */
+  .feature-quote{
+    padding:72px 0;
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    gap:56px;
+    align-items:start;
+  }
+  .pull-quote{
+    font-family:'Fraunces',serif;
+    font-size:clamp(24px,3vw,34px);
+    font-weight:500;
+    font-style:italic;
+    line-height:1.35;
+    color:var(--ink);
+    border-left:3px solid var(--lacquer);
+    padding-left:26px;
+  }
+  .pull-quote + p{
+    margin-top:20px;
+    padding-left:29px;
+    font-size:15px;
+    color:var(--ink-soft);
+    max-width:520px;
+  }
+  .credits-box{
+    border:1px solid var(--ink);
+    padding:24px;
+  }
+  .credits-box .eyebrow{margin-bottom:16px;}
+  .credits-row{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px dotted rgba(34,29,26,0.3);
+    font-size:14px;
+  }
+  .credits-row:last-child{border-bottom:none;}
+  .credits-row span:first-child{color:var(--ink-soft);}
+  .credits-row span:last-child{font-weight:600;}
+
+  /* ---------- FOOTER / BACK COVER ---------- */
+  .back-cover{
+    background:var(--plum);
+    color:var(--vellum);
+    padding:72px 0 32px;
+  }
+  .back-cover-top{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:48px;
+    align-items:center;
+    padding-bottom:48px;
+    border-bottom:1px solid rgba(247,241,234,0.18);
+  }
+  .back-cover h2{
+    color:var(--vellum);
+    font-size:clamp(32px,5vw,52px);
+    font-weight:600;
+    line-height:1.05;
+    margin-bottom:18px;
+  }
+  .back-cover .eyebrow{color:var(--swatch-2);}
+  .back-cover p{
+    color:rgba(247,241,234,0.75);
+    font-size:15px;
+    max-width:420px;
+    margin-bottom:26px;
+  }
+  .back-cover .btn-primary{border-color:var(--lacquer);}
+  .footer-panel{
+    border:1px solid rgba(247,241,234,0.25);
+    padding:24px;
+  }
+  .footer-panel .credits-row{border-bottom:1px dotted rgba(247,241,234,0.25);}
+  .footer-panel .credits-row span:first-child{color:rgba(247,241,234,0.6);}
+  .footer-panel .credits-row span:last-child{color:var(--vellum);}
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:28px;
+    font-size:12px;
+    color:rgba(247,241,234,0.5);
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .footer-bottom .barcode span{background:var(--vellum);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .main-nav, .nav-cta{display:none;}
+    .nav-toggle{display:flex;}
+    .cover-body{grid-template-columns:1fr; text-align:center;}
+    .cover-lines.left, .cover-lines.right{align-items:center; text-align:center;}
+    .product-grid, .step-list{grid-template-columns:1fr 1fr;}
+    .feature-quote{grid-template-columns:1fr;}
+    .back-cover-top{grid-template-columns:1fr;}
+  }
+  @media (max-width: 560px){
+    .product-grid, .step-list{grid-template-columns:1fr;}
+    .cover-top{flex-direction:column; gap:6px;}
+    .cover-top .price-corner{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<!--
+  NOTAS PARA PERSONALIZAR:
+  1. Reemplazá "@kiosco.belleza" por tu usuario real de Instagram (aparece en el header y en el footer).
+  2. Reemplazá el número de WhatsApp en el botón "Escribinos por WhatsApp".
+  3. Las "portadas" de producto son ilustraciones hechas con CSS (degradados). Podés reemplazarlas
+     por fotos reales de tus revistas usando background-image en .product-cover, o insertando <img>.
+  4. Ajustá precios, nombres de revistas y textos de ejemplo por tu catálogo real.
+-->
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#top" class="masthead-mini">Kiosco Belleza</a>
+    <nav class="main-nav" id="main-nav">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#comprar">Cómo comprar</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="nav-cta" href="https://instagram.com/kiosco.belleza" target="_blank" rel="noopener">@kiosco.belleza</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" hidden style="padding:0 24px 20px; display:flex; flex-direction:column; gap:14px;">
+    <a href="#catalogo">Catálogo</a>
+    <a href="#comprar">Cómo comprar</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#contacto">Contacto</a>
+    <a href="https://instagram.com/kiosco.belleza" target="_blank" rel="noopener">@kiosco.belleza →</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ COVER / HERO ============ -->
+  <section class="cover" id="top">
+    <div class="cover-frame">
+      <div class="cover-top">
+        <span>Edición N.º 01 — Agosto 2026</span>
+        <span class="price-corner">Envíos a todo el país<br>Pago contra reembolso disponible</span>
+      </div>
+
+      <div class="cover-body">
+        <div class="cover-lines left">
+          <p class="cover-line"><small>Archivo</small>12 ediciones vintage de revistas de belleza, curadas a mano</p>
+          <p class="cover-line"><small>Guía</small>Cómo armar tu propio archivo de skincare y maquillaje</p>
+        </div>
+
+        <div class="cover-center">
+          <h1 class="masthead">KIOSCO<br><em>Belleza</em></h1>
+          <p class="cover-tagline">Revistas de belleza y moda, seleccionadas número a número. Ediciones actuales, importadas y de colección.</p>
+          <div class="cover-blob" aria-hidden="true"></div>
+          <div class="cover-ctas">
+            <a class="btn btn-primary" href="https://instagram.com/kiosco.belleza" target="_blank" rel="noopener">Ver catálogo en Instagram</a>
+            <a class="btn btn-secondary" href="https://wa.me/5490000000000" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="cover-lines right">
+          <p class="cover-line"><small>Novedad</small>Allure, Elle y Marie Claire Beauty — ediciones de temporada</p>
+          <p class="cover-line"><small>Colección</small>Números agotados, ahora disponibles por tiempo limitado</p>
+        </div>
+      </div>
+
+      <div class="cover-bottom">
+        <div>
+          <div class="barcode" aria-hidden="true">
+            <span style="height:34px"></span><span style="height:22px"></span><span style="height:34px"></span>
+            <span style="height:18px"></span><span style="height:34px"></span><span style="height:26px"></span>
+            <span style="height:34px"></span><span style="height:14px"></span><span style="height:34px"></span>
+            <span style="height:30px"></span><span style="height:34px"></span><span style="height:20px"></span>
+          </div>
+          <div class="barcode-label">Kiosco Belleza · Ed. 01</div>
+        </div>
+        <span class="eyebrow">Seguinos y comprá en @kiosco.belleza</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CATÁLOGO ============ -->
+  <section class="indice wrap" id="catalogo">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Índice — En este número</span>
+        <h2>El catálogo</h2>
+      </div>
+      <p class="section-note">Cada portada es una edición disponible. Tocá "Comprar" para reservarla por Instagram o WhatsApp.</p>
+    </div>
+
+    <div class="product-grid">
+
+      <article class="product-card">
+        <div class="product-cover s1">
+          <span class="product-tag">Últimas unidades</span>
+          <p class="product-issue"><span>Especial skincare</span>Vogue Beauty</p>
+        </div>
+        <div class="product-info">
+          <span class="product-price">$3.500</span>
+          <a class="product-buy" href="https://instagram.com/kiosco.belleza" target="_blank" rel="noopener">Comprar</a>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-cover s2">
+          <span class="product-tag">Nuevo</span>
+          <p class="product-issue"><span>Edición otoño</span>Allure</p>
+        </div>
+        <div class="product-info">
+          <span class="product-price">$3.200</span>
+          <a class="product-buy" href="https://instagram.com/kiosco.belleza" target="_blank" rel="noopener">Comprar</a>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-cover s3">
+          <span class="product-tag">Guía práctica</span>
+          <p class="product-issue"><span>Maquillaje paso a paso</span>Elle Belleza</p>
+        </div>
+        <div class="product-info">
+          <span class="product-price">$2.900</span>
+          <a class="product-buy" href="https://instagram.com/kiosco.belleza" target="_blank" rel="noopener">Comprar</a>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-cover s4">
+          <span class="product-tag">Vintage</span>
+          <p class="product-issue"><span>Archivo 2019</span>Glamour</p>
+        </div>
+        <div class="product-info">
+          <span class="product-price">$4.100</span>
+          <a class="product-buy" href="https://instagram.com/kiosco.belleza" target="_blank" rel="noopener">Comprar</a>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-cover s5">
+          <span class="product-tag">Importada</span>
+          <p class="product-issue"><span>Beauty awards</span>Marie Claire</p>
+        </div>
+        <div class="product-info">
+          <span class="product-price">$4.800</span>
+          <a class="product-buy" href="https://instagram.com/kiosco.belleza" target="_blank" rel="noopener">Comprar</a>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-cover s6">
+          <span class="product-tag">Pocas unidades</span>
+          <p class="product-issue"><span>Rituales de belleza</span>Bazaar</p>
+        </div>
+        <div class="product-info">
+          <span class="product-price">$3.700</span>
+          <a class="product-buy" href="https://instagram.com/kiosco.belleza" target="_blank" rel="noopener">Comprar</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ CÓMO COMPRAR ============ -->
+  <section class="steps" id="comprar">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Guía rápida</span>
+          <h2>Cómo comprar</h2>
+        </div>
+        <p class="section-note">Tres pasos, todo por Instagram o WhatsApp. Sin registros ni cuentas.</p>
+      </div>
+      <ol class="step-list">
+        <li class="step">
+          <span class="step-num">01</span>
+          <h3>Elegí tu edición</h3>
+          <p>Mirá el catálogo acá o en nuestro perfil de Instagram y elegí la revista que querés.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">02</span>
+          <h3>Reservala</h3>
+          <p>Escribinos por DM o WhatsApp con el nombre de la edición para separarla a tu nombre.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">03</span>
+          <h3>Coordinamos el envío</h3>
+          <p>Confirmamos forma de pago y envío a tu domicilio o punto de retiro más cercano.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ NOSOTROS ============ -->
+  <section class="feature-quote wrap" id="nosotros">
+    <div>
+      <p class="pull-quote">"Cada revista que vendemos pasó antes por nuestras manos: la leímos, la cuidamos y la elegimos para vos."</p>
+      <p>Kiosco Belleza nació de una colección personal de revistas de moda y belleza que no dejaba de crecer. Hoy compartimos esa curaduría con quienes buscan inspiración, tutoriales y buen papel para archivar.</p>
+    </div>
+    <div class="credits-box">
+      <span class="eyebrow">Ficha técnica</span>
+      <div class="credits-row"><span>Curaduría</span><span>Equipo Kiosco</span></div>
+      <div class="credits-row"><span>Estado de las ediciones</span><span>Nuevo / muy buen estado</span></div>
+      <div class="credits-row"><span>Envíos</span><span>A todo el país</span></div>
+      <div class="credits-row"><span>Reposición</span><span>Semanal</span></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER / CONTRAPORTADA ============ -->
+<footer class="back-cover" id="contacto">
+  <div class="wrap">
+    <div class="back-cover-top">
+      <div>
+        <span class="eyebrow">Contraportada</span>
+        <h2>Tu próxima lectura<br>de belleza te espera.</h2>
+        <p>Seguinos en Instagram para ver las novedades apenas llegan, o escribinos directo para reservar tu edición.</p>
+        <a class="btn btn-primary" href="https://instagram.com/kiosco.belleza" target="_blank" rel="noopener">@kiosco.belleza</a>
+      </div>
+      <div class="footer-panel">
+        <span class="eyebrow">Contacto</span>
+        <div class="credits-row"><span>Instagram</span><span>@kiosco.belleza</span></div>
+        <div class="credits-row"><span>WhatsApp</span><span>+54 9 00 0000-0000</span></div>
+        <div class="credits-row"><span>Horario de atención</span><span>Lun a Sáb, 10 a 19h</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>
+        <div class="barcode" aria-hidden="true">
+          <span style="height:24px"></span><span style="height:16px"></span><span style="height:24px"></span>
+          <span style="height:12px"></span><span style="height:24px"></span><span style="height:18px"></span>
+        </div>
+      </div>
+      <span>© 2026 Kiosco Belleza · Hecho con papel, tinta y buen gusto.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  toggle.addEventListener('click', () => {
+    const isOpen = !mobileNav.hasAttribute('hidden');
+    if (isOpen) {
+      mobileNav.setAttribute('hidden', '');
+      toggle.setAttribute('aria-expanded', 'false');
+    } else {
+      mobileNav.removeAttribute('hidden');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+  });
+</script>
+
+</body>
+</html>
