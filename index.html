@@ -3,27 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kiosco Belleza — Revistas de belleza & moda</title>
+<title>Catálogos Estilo — Oriflame, Natura, Ésika y Leonisa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --vellum:#F7F1EA;
-    --vellum-dim:#EFE7DC;
-    --ink:#221D1A;
-    --ink-soft:#5B534C;
-    --lacquer:#B23A4A;
-    --lacquer-dark:#8E2E3B;
-    --gold:#A9803D;
-    --blush:#EFDAD3;
-    --plum:#3E2632;
-    --swatch-1:#B23A4A;
-    --swatch-2:#C68B59;
-    --swatch-3:#8A9B7D;
-    --swatch-4:#7C93A8;
-    --swatch-5:#A9803D;
-    --swatch-6:#8E5A6B;
+    --cream:#FBF3EF;
+    --cream-dim:#F3E6E0;
+    --ink:#2A2320;
+    --ink-soft:#6B5D57;
+    --rose:#D6486E;
+    --rose-dark:#AC3557;
+    --gold:#C79A3B;
+    --blush:#F6DCE0;
+    --berry:#5C1F3B;
+    --c-oriflame-1:#6FA287;
+    --c-oriflame-2:#3F6B54;
+    --c-natura-1:#A9C36B;
+    --c-natura-2:#5C7A34;
+    --c-esika-1:#D6486E;
+    --c-esika-2:#7A1F4B;
+    --c-leonisa-1:#E8B4B8;
+    --c-leonisa-2:#AC3557;
     --radius:2px;
     --max:1180px;
   }
@@ -37,7 +39,7 @@
 
   body{
     margin:0;
-    background:var(--vellum);
+    background:var(--cream);
     color:var(--ink);
     font-family:'Inter',sans-serif;
     font-size:16px;
@@ -55,7 +57,7 @@
 
   a:focus-visible,
   button:focus-visible{
-    outline:2px solid var(--lacquer);
+    outline:2px solid var(--rose);
     outline-offset:3px;
   }
 
@@ -80,9 +82,9 @@
     position:sticky;
     top:0;
     z-index:50;
-    background:rgba(247,241,234,0.92);
+    background:rgba(251,243,239,0.92);
     backdrop-filter:blur(6px);
-    border-bottom:1px solid rgba(34,29,26,0.12);
+    border-bottom:1px solid rgba(42,35,32,0.12);
   }
   .header-inner{
     max-width:var(--max);
@@ -112,8 +114,8 @@
     transition:border-color .2s ease, color .2s ease;
   }
   .main-nav a:hover{
-    color:var(--lacquer);
-    border-color:var(--lacquer);
+    color:var(--rose);
+    border-color:var(--rose);
   }
   .nav-cta{
     font-size:13px;
@@ -127,7 +129,7 @@
   }
   .nav-cta:hover{
     background:var(--ink);
-    color:var(--vellum);
+    color:var(--cream);
   }
   .nav-toggle{
     display:none;
@@ -143,6 +145,20 @@
     height:2px;
     background:var(--ink);
     display:block;
+  }
+  .mobile-nav{
+    display:none;
+    flex-direction:column;
+    gap:14px;
+    padding:0 24px 20px;
+  }
+  .mobile-nav.is-open{
+    display:flex;
+  }
+  @media (min-width: 861px){
+    .mobile-nav{
+      display:none !important;
+    }
   }
 
   /* ---------- COVER / HERO ---------- */
@@ -161,7 +177,7 @@
     justify-content:space-between;
     align-items:flex-start;
     padding-bottom:22px;
-    border-bottom:1px solid rgba(34,29,26,0.15);
+    border-bottom:1px solid rgba(42,35,32,0.15);
     margin-bottom:28px;
     font-size:12px;
     letter-spacing:0.1em;
@@ -198,14 +214,14 @@
     font-weight:600;
     letter-spacing:0.1em;
     text-transform:uppercase;
-    color:var(--lacquer);
+    color:var(--rose);
     margin-bottom:4px;
   }
   .cover-center{
     text-align:center;
   }
   .masthead{
-    font-size:clamp(48px,8vw,96px);
+    font-size:clamp(44px,7.5vw,88px);
     font-weight:700;
     letter-spacing:-0.01em;
     line-height:0.95;
@@ -213,12 +229,12 @@
   }
   .masthead em{
     font-style:italic;
-    color:var(--lacquer);
+    color:var(--rose);
   }
   .cover-tagline{
     font-size:15px;
     color:var(--ink-soft);
-    max-width:340px;
+    max-width:360px;
     margin:0 auto 26px;
   }
   .cover-blob{
@@ -226,20 +242,20 @@
     height:170px;
     margin:0 auto 26px;
     border-radius:50%;
-    background:radial-gradient(circle at 32% 28%, #fff2, transparent 55%),
-               conic-gradient(from 210deg, var(--lacquer), var(--swatch-2), var(--gold), var(--lacquer));
+    background:radial-gradient(circle at 32% 28%, #fff3, transparent 55%),
+               conic-gradient(from 210deg, var(--rose), var(--gold), var(--c-natura-1), var(--rose));
     position:relative;
     display:flex;
     align-items:center;
     justify-content:center;
   }
   .cover-blob::after{
-    content:'NUEVO NÚMERO';
+    content:'NUEVA CAMPAÑA';
     font-size:10px;
     font-weight:700;
     letter-spacing:0.12em;
     background:var(--ink);
-    color:var(--vellum);
+    color:var(--cream);
     padding:7px 12px;
     border-radius:999px;
     transform:rotate(-8deg);
@@ -261,21 +277,21 @@
     transition:transform .15s ease, background .2s ease, color .2s ease;
   }
   .btn-primary{
-    background:var(--lacquer);
-    border-color:var(--lacquer);
-    color:var(--vellum);
+    background:var(--rose);
+    border-color:var(--rose);
+    color:var(--cream);
   }
-  .btn-primary:hover{background:var(--lacquer-dark); transform:translateY(-1px);}
+  .btn-primary:hover{background:var(--rose-dark); transform:translateY(-1px);}
   .btn-secondary{
     background:transparent;
     color:var(--ink);
   }
-  .btn-secondary:hover{background:var(--ink); color:var(--vellum); transform:translateY(-1px);}
+  .btn-secondary:hover{background:var(--ink); color:var(--cream); transform:translateY(-1px);}
 
   .cover-bottom{
     margin-top:34px;
     padding-top:22px;
-    border-top:1px solid rgba(34,29,26,0.15);
+    border-top:1px solid rgba(42,35,32,0.15);
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -309,7 +325,7 @@
     flex-wrap:wrap;
     margin-bottom:36px;
     padding-bottom:18px;
-    border-bottom:1px solid rgba(34,29,26,0.15);
+    border-bottom:1px solid rgba(42,35,32,0.15);
   }
   .section-head h2{
     font-size:clamp(28px,4vw,42px);
@@ -319,22 +335,22 @@
   .section-note{
     font-size:14px;
     color:var(--ink-soft);
-    max-width:280px;
+    max-width:300px;
     text-align:right;
   }
 
-  /* ---------- CATALOG ---------- */
+  /* ---------- CATÁLOGO / MARCAS ---------- */
   .indice{
     padding:64px 0;
   }
   .product-grid{
     display:grid;
-    grid-template-columns:repeat(3, 1fr);
+    grid-template-columns:repeat(4, 1fr);
     gap:28px;
   }
   .product-card{
-    background:var(--vellum-dim);
-    border:1px solid rgba(34,29,26,0.12);
+    background:var(--cream-dim);
+    border:1px solid rgba(42,35,32,0.12);
   }
   .product-cover{
     aspect-ratio:3/4;
@@ -343,28 +359,26 @@
     flex-direction:column;
     justify-content:space-between;
     padding:16px;
-    color:var(--vellum);
+    color:var(--cream);
     overflow:hidden;
   }
-  .product-cover.s1{background:linear-gradient(155deg, var(--swatch-1), #6f2430);}
-  .product-cover.s2{background:linear-gradient(155deg, var(--swatch-2), #8a5c34);}
-  .product-cover.s3{background:linear-gradient(155deg, var(--swatch-3), #566249);}
-  .product-cover.s4{background:linear-gradient(155deg, var(--swatch-4), #4c5f71);}
-  .product-cover.s5{background:linear-gradient(155deg, var(--swatch-5), #7a5f2a);}
-  .product-cover.s6{background:linear-gradient(155deg, var(--swatch-6), #5c384a);}
+  .product-cover.c-oriflame{background:linear-gradient(155deg, var(--c-oriflame-1), var(--c-oriflame-2));}
+  .product-cover.c-natura{background:linear-gradient(155deg, var(--c-natura-1), var(--c-natura-2)); color:var(--ink);}
+  .product-cover.c-esika{background:linear-gradient(155deg, var(--c-esika-1), var(--c-esika-2));}
+  .product-cover.c-leonisa{background:linear-gradient(155deg, var(--c-leonisa-1), var(--c-leonisa-2)); color:var(--ink);}
   .product-tag{
     align-self:flex-start;
     font-size:10px;
     font-weight:700;
     letter-spacing:0.1em;
     text-transform:uppercase;
-    background:rgba(255,255,255,0.18);
+    background:rgba(255,255,255,0.28);
     padding:5px 10px;
     border-radius:999px;
   }
   .product-issue{
     font-family:'Fraunces',serif;
-    font-size:15px;
+    font-size:17px;
     font-weight:600;
     line-height:1.3;
   }
@@ -375,7 +389,7 @@
     font-weight:600;
     letter-spacing:0.12em;
     text-transform:uppercase;
-    opacity:0.8;
+    opacity:0.85;
     margin-bottom:6px;
   }
   .product-info{
@@ -383,22 +397,24 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
+    gap:8px;
   }
-  .product-price{
-    font-family:'Fraunces',serif;
-    font-size:18px;
+  .product-status{
+    font-size:12px;
     font-weight:600;
+    color:var(--ink-soft);
   }
   .product-buy{
     font-size:12px;
     font-weight:600;
     letter-spacing:0.04em;
-    color:var(--lacquer);
-    border-bottom:1px solid var(--lacquer);
+    color:var(--rose);
+    border-bottom:1px solid var(--rose);
+    white-space:nowrap;
   }
   .product-card:hover .product-buy{color:var(--ink); border-color:var(--ink);}
 
-  /* ---------- STEPS ---------- */
+  /* ---------- CÓMO COMPRAR ---------- */
   .steps{
     padding:64px 0;
     background:var(--blush);
@@ -410,14 +426,14 @@
   }
   .step{
     padding:26px 22px;
-    background:var(--vellum);
-    border:1px solid rgba(34,29,26,0.1);
+    background:var(--cream);
+    border:1px solid rgba(42,35,32,0.1);
   }
   .step-num{
     font-family:'Fraunces',serif;
     font-size:34px;
     font-weight:600;
-    color:var(--lacquer);
+    color:var(--rose);
     display:block;
     margin-bottom:12px;
   }
@@ -432,7 +448,7 @@
     margin:0;
   }
 
-  /* ---------- ABOUT / MASTHEAD CREDITS ---------- */
+  /* ---------- NOSOTROS ---------- */
   .feature-quote{
     padding:72px 0;
     display:grid;
@@ -442,12 +458,12 @@
   }
   .pull-quote{
     font-family:'Fraunces',serif;
-    font-size:clamp(24px,3vw,34px);
+    font-size:clamp(22px,2.8vw,32px);
     font-weight:500;
     font-style:italic;
     line-height:1.35;
     color:var(--ink);
-    border-left:3px solid var(--lacquer);
+    border-left:3px solid var(--rose);
     padding-left:26px;
   }
   .pull-quote + p{
@@ -465,18 +481,19 @@
   .credits-row{
     display:flex;
     justify-content:space-between;
+    gap:12px;
     padding:10px 0;
-    border-bottom:1px dotted rgba(34,29,26,0.3);
+    border-bottom:1px dotted rgba(42,35,32,0.3);
     font-size:14px;
   }
   .credits-row:last-child{border-bottom:none;}
   .credits-row span:first-child{color:var(--ink-soft);}
-  .credits-row span:last-child{font-weight:600;}
+  .credits-row span:last-child{font-weight:600; text-align:right;}
 
-  /* ---------- FOOTER / BACK COVER ---------- */
+  /* ---------- FOOTER ---------- */
   .back-cover{
-    background:var(--plum);
-    color:var(--vellum);
+    background:var(--berry);
+    color:var(--cream);
     padding:72px 0 32px;
   }
   .back-cover-top{
@@ -485,41 +502,41 @@
     gap:48px;
     align-items:center;
     padding-bottom:48px;
-    border-bottom:1px solid rgba(247,241,234,0.18);
+    border-bottom:1px solid rgba(251,243,239,0.18);
   }
   .back-cover h2{
-    color:var(--vellum);
-    font-size:clamp(32px,5vw,52px);
+    color:var(--cream);
+    font-size:clamp(30px,4.6vw,48px);
     font-weight:600;
-    line-height:1.05;
+    line-height:1.08;
     margin-bottom:18px;
   }
-  .back-cover .eyebrow{color:var(--swatch-2);}
+  .back-cover .eyebrow{color:var(--gold);}
   .back-cover p{
-    color:rgba(247,241,234,0.75);
+    color:rgba(251,243,239,0.78);
     font-size:15px;
     max-width:420px;
     margin-bottom:26px;
   }
-  .back-cover .btn-primary{border-color:var(--lacquer);}
+  .back-cover .btn-primary{border-color:var(--rose);}
   .footer-panel{
-    border:1px solid rgba(247,241,234,0.25);
+    border:1px solid rgba(251,243,239,0.25);
     padding:24px;
   }
-  .footer-panel .credits-row{border-bottom:1px dotted rgba(247,241,234,0.25);}
-  .footer-panel .credits-row span:first-child{color:rgba(247,241,234,0.6);}
-  .footer-panel .credits-row span:last-child{color:var(--vellum);}
+  .footer-panel .credits-row{border-bottom:1px dotted rgba(251,243,239,0.25);}
+  .footer-panel .credits-row span:first-child{color:rgba(251,243,239,0.62);}
+  .footer-panel .credits-row span:last-child{color:var(--cream);}
   .footer-bottom{
     display:flex;
     justify-content:space-between;
     align-items:center;
     padding-top:28px;
     font-size:12px;
-    color:rgba(247,241,234,0.5);
+    color:rgba(251,243,239,0.55);
     flex-wrap:wrap;
     gap:12px;
   }
-  .footer-bottom .barcode span{background:var(--vellum);}
+  .footer-bottom .barcode span{background:var(--cream);}
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 860px){
@@ -542,65 +559,65 @@
 
 <!--
   NOTAS PARA PERSONALIZAR:
-  1. Reemplazá "@kiosco.belleza" por tu usuario real de Instagram (aparece en el header y en el footer).
-  2. Reemplazá el número de WhatsApp en el botón "Escribinos por WhatsApp".
-  3. Las "portadas" de producto son ilustraciones hechas con CSS (degradados). Podés reemplazarlas
-     por fotos reales de tus revistas usando background-image en .product-cover, o insertando <img>.
-  4. Ajustá precios, nombres de revistas y textos de ejemplo por tu catálogo real.
+  1. El usuario de Instagram ya está puesto: @catalogosestilo (aparece en header, botones y footer).
+  2. Reemplaza el número de WhatsApp (+57 300 000 0000) por el número real, en formato wa.me/57XXXXXXXXXX.
+  3. Las tarjetas de marca (Oriflame, Natura, Ésika, Leonisa) usan colores hechos en CSS.
+     Podés reemplazarlas por fotos reales de catálogo usando background-image en .product-cover.
+  4. Ajusta el estado de cada marca ("Stock disponible" / "Reservas abiertas") según la campaña vigente.
 -->
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="#top" class="masthead-mini">Kiosco Belleza</a>
+    <a href="#top" class="masthead-mini">Catálogos Estilo</a>
     <nav class="main-nav" id="main-nav">
       <a href="#catalogo">Catálogo</a>
       <a href="#comprar">Cómo comprar</a>
       <a href="#nosotros">Nosotros</a>
       <a href="#contacto">Contacto</a>
     </nav>
-    <a class="nav-cta" href="https://instagram.com/kiosco.belleza" target="_blank" rel="noopener">@kiosco.belleza</a>
+    <a class="nav-cta" href="https://www.instagram.com/catalogosestilo/" target="_blank" rel="noopener">@catalogosestilo</a>
     <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
       <span></span><span></span><span></span>
     </button>
   </div>
-  <nav class="mobile-nav" id="mobile-nav" hidden style="padding:0 24px 20px; display:flex; flex-direction:column; gap:14px;">
+  <nav class="mobile-nav" id="mobile-nav">
     <a href="#catalogo">Catálogo</a>
     <a href="#comprar">Cómo comprar</a>
     <a href="#nosotros">Nosotros</a>
     <a href="#contacto">Contacto</a>
-    <a href="https://instagram.com/kiosco.belleza" target="_blank" rel="noopener">@kiosco.belleza →</a>
+    <a href="https://www.instagram.com/catalogosestilo/" target="_blank" rel="noopener">@catalogosestilo →</a>
   </nav>
 </header>
 
 <main>
 
-  <!-- ============ COVER / HERO ============ -->
+  <!-- ============ PORTADA ============ -->
   <section class="cover" id="top">
     <div class="cover-frame">
       <div class="cover-top">
-        <span>Edición N.º 01 — Agosto 2026</span>
-        <span class="price-corner">Envíos a todo el país<br>Pago contra reembolso disponible</span>
+        <span>Campaña vigente — Agosto 2026</span>
+        <span class="price-corner">Envíos en Colombia<br>Pedidos y reservas por Instagram</span>
       </div>
 
       <div class="cover-body">
         <div class="cover-lines left">
-          <p class="cover-line"><small>Archivo</small>12 ediciones vintage de revistas de belleza, curadas a mano</p>
-          <p class="cover-line"><small>Guía</small>Cómo armar tu propio archivo de skincare y maquillaje</p>
+          <p class="cover-line"><small>Oriflame</small>Perfumería y skincare natural, directo del catálogo europeo</p>
+          <p class="cover-line"><small>Natura</small>Cuidado personal y fragancias con causa</p>
         </div>
 
         <div class="cover-center">
-          <h1 class="masthead">KIOSCO<br><em>Belleza</em></h1>
-          <p class="cover-tagline">Revistas de belleza y moda, seleccionadas número a número. Ediciones actuales, importadas y de colección.</p>
+          <h1 class="masthead">CATÁLOGOS<br><em>Estilo</em></h1>
+          <p class="cover-tagline">Pedidos y reservas de Oriflame, Natura, Ésika y Leonisa. Lo que tenemos en stock te llega ya; lo que está en catálogo, lo reservas y te avisamos.</p>
           <div class="cover-blob" aria-hidden="true"></div>
           <div class="cover-ctas">
-            <a class="btn btn-primary" href="https://instagram.com/kiosco.belleza" target="_blank" rel="noopener">Ver catálogo en Instagram</a>
-            <a class="btn btn-secondary" href="https://wa.me/5490000000000" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
+            <a class="btn btn-primary" href="https://www.instagram.com/catalogosestilo/" target="_blank" rel="noopener">Ver catálogo en Instagram</a>
+            <a class="btn btn-secondary" href="https://wa.me/573000000000" target="_blank" rel="noopener">Pedir por WhatsApp</a>
           </div>
         </div>
 
         <div class="cover-lines right">
-          <p class="cover-line"><small>Novedad</small>Allure, Elle y Marie Claire Beauty — ediciones de temporada</p>
-          <p class="cover-line"><small>Colección</small>Números agotados, ahora disponibles por tiempo limitado</p>
+          <p class="cover-line"><small>Ésika</small>Maquillaje y tendencias de cada campaña</p>
+          <p class="cover-line"><small>Leonisa</small>Fajas y ropa interior moldeadora, tallas completas</p>
         </div>
       </div>
 
@@ -612,88 +629,66 @@
             <span style="height:34px"></span><span style="height:14px"></span><span style="height:34px"></span>
             <span style="height:30px"></span><span style="height:34px"></span><span style="height:20px"></span>
           </div>
-          <div class="barcode-label">Kiosco Belleza · Ed. 01</div>
+          <div class="barcode-label">Catálogos Estilo · Campaña vigente</div>
         </div>
-        <span class="eyebrow">Seguinos y comprá en @kiosco.belleza</span>
+        <span class="eyebrow">Síguenos y pide en @catalogosestilo</span>
       </div>
     </div>
   </section>
 
-  <!-- ============ CATÁLOGO ============ -->
+  <!-- ============ MARCAS / CATÁLOGO ============ -->
   <section class="indice wrap" id="catalogo">
     <div class="section-head">
       <div>
-        <span class="eyebrow">Índice — En este número</span>
-        <h2>El catálogo</h2>
+        <span class="eyebrow">Marcas disponibles</span>
+        <h2>Nuestro catálogo</h2>
       </div>
-      <p class="section-note">Cada portada es una edición disponible. Tocá "Comprar" para reservarla por Instagram o WhatsApp.</p>
+      <p class="section-note">Elige la marca, mira lo que tenemos en stock o revisa el catálogo de la campaña vigente.</p>
     </div>
 
     <div class="product-grid">
 
       <article class="product-card">
-        <div class="product-cover s1">
-          <span class="product-tag">Últimas unidades</span>
-          <p class="product-issue"><span>Especial skincare</span>Vogue Beauty</p>
+        <div class="product-cover c-oriflame">
+          <span class="product-tag">Catálogo vigente</span>
+          <p class="product-issue"><span>Perfumería · Skincare</span>Oriflame</p>
         </div>
         <div class="product-info">
-          <span class="product-price">$3.500</span>
-          <a class="product-buy" href="https://instagram.com/kiosco.belleza" target="_blank" rel="noopener">Comprar</a>
+          <span class="product-status">Stock disponible</span>
+          <a class="product-buy" href="https://www.instagram.com/catalogosestilo/" target="_blank" rel="noopener">Pedir</a>
         </div>
       </article>
 
       <article class="product-card">
-        <div class="product-cover s2">
-          <span class="product-tag">Nuevo</span>
-          <p class="product-issue"><span>Edición otoño</span>Allure</p>
+        <div class="product-cover c-natura">
+          <span class="product-tag">Nuevos lanzamientos</span>
+          <p class="product-issue"><span>Cuidado personal</span>Natura</p>
         </div>
         <div class="product-info">
-          <span class="product-price">$3.200</span>
-          <a class="product-buy" href="https://instagram.com/kiosco.belleza" target="_blank" rel="noopener">Comprar</a>
+          <span class="product-status">Reservas abiertas</span>
+          <a class="product-buy" href="https://www.instagram.com/catalogosestilo/" target="_blank" rel="noopener">Reservar</a>
         </div>
       </article>
 
       <article class="product-card">
-        <div class="product-cover s3">
-          <span class="product-tag">Guía práctica</span>
-          <p class="product-issue"><span>Maquillaje paso a paso</span>Elle Belleza</p>
+        <div class="product-cover c-esika">
+          <span class="product-tag">Ofertas del mes</span>
+          <p class="product-issue"><span>Maquillaje · Color</span>Ésika</p>
         </div>
         <div class="product-info">
-          <span class="product-price">$2.900</span>
-          <a class="product-buy" href="https://instagram.com/kiosco.belleza" target="_blank" rel="noopener">Comprar</a>
+          <span class="product-status">Stock disponible</span>
+          <a class="product-buy" href="https://www.instagram.com/catalogosestilo/" target="_blank" rel="noopener">Pedir</a>
         </div>
       </article>
 
       <article class="product-card">
-        <div class="product-cover s4">
-          <span class="product-tag">Vintage</span>
-          <p class="product-issue"><span>Archivo 2019</span>Glamour</p>
+        <div class="product-cover c-leonisa">
+          <span class="product-tag">Tallas completas</span>
+          <p class="product-issue"><span>Fajas · Ropa interior</span>Leonisa</p>
         </div>
         <div class="product-info">
-          <span class="product-price">$4.100</span>
-          <a class="product-buy" href="https://instagram.com/kiosco.belleza" target="_blank" rel="noopener">Comprar</a>
-        </div>
-      </article>
-
-      <article class="product-card">
-        <div class="product-cover s5">
-          <span class="product-tag">Importada</span>
-          <p class="product-issue"><span>Beauty awards</span>Marie Claire</p>
-        </div>
-        <div class="product-info">
-          <span class="product-price">$4.800</span>
-          <a class="product-buy" href="https://instagram.com/kiosco.belleza" target="_blank" rel="noopener">Comprar</a>
-        </div>
-      </article>
-
-      <article class="product-card">
-        <div class="product-cover s6">
-          <span class="product-tag">Pocas unidades</span>
-          <p class="product-issue"><span>Rituales de belleza</span>Bazaar</p>
-        </div>
-        <div class="product-info">
-          <span class="product-price">$3.700</span>
-          <a class="product-buy" href="https://instagram.com/kiosco.belleza" target="_blank" rel="noopener">Comprar</a>
+          <span class="product-status">Reservas abiertas</span>
+          <a class="product-buy" href="https://www.instagram.com/catalogosestilo/" target="_blank" rel="noopener">Reservar</a>
         </div>
       </article>
 
@@ -708,23 +703,23 @@
           <span class="eyebrow">Guía rápida</span>
           <h2>Cómo comprar</h2>
         </div>
-        <p class="section-note">Tres pasos, todo por Instagram o WhatsApp. Sin registros ni cuentas.</p>
+        <p class="section-note">Dos formas de comprar: lo que ya tenemos, y lo que reservas para la próxima campaña.</p>
       </div>
       <ol class="step-list">
         <li class="step">
           <span class="step-num">01</span>
-          <h3>Elegí tu edición</h3>
-          <p>Mirá el catálogo acá o en nuestro perfil de Instagram y elegí la revista que querés.</p>
+          <h3>Mira lo disponible</h3>
+          <p>Revisa el catálogo: productos que ya tenemos en stock, listos para entrega inmediata, y los de la campaña vigente de Oriflame, Natura, Ésika y Leonisa.</p>
         </li>
         <li class="step">
           <span class="step-num">02</span>
-          <h3>Reservala</h3>
-          <p>Escribinos por DM o WhatsApp con el nombre de la edición para separarla a tu nombre.</p>
+          <h3>Pide o reserva</h3>
+          <p>Escríbenos por Instagram o WhatsApp. Si el producto está en stock, lo pides directo; si está en catálogo, lo reservas para la próxima campaña.</p>
         </li>
         <li class="step">
           <span class="step-num">03</span>
-          <h3>Coordinamos el envío</h3>
-          <p>Confirmamos forma de pago y envío a tu domicilio o punto de retiro más cercano.</p>
+          <h3>Te avisamos y te lo entregamos</h3>
+          <p>Si ya lo teníamos en stock, coordinamos la entrega o el envío. Si lo reservaste, en cuanto se abra el pedido con la marca te confirmamos y te lo hacemos llegar.</p>
         </li>
       </ol>
     </div>
@@ -733,35 +728,35 @@
   <!-- ============ NOSOTROS ============ -->
   <section class="feature-quote wrap" id="nosotros">
     <div>
-      <p class="pull-quote">"Cada revista que vendemos pasó antes por nuestras manos: la leímos, la cuidamos y la elegimos para vos."</p>
-      <p>Kiosco Belleza nació de una colección personal de revistas de moda y belleza que no dejaba de crecer. Hoy compartimos esa curaduría con quienes buscan inspiración, tutoriales y buen papel para archivar.</p>
+      <p class="pull-quote">"Te acompañamos en cada campaña, sin filas ni complicaciones: lo que necesitas, cuando lo necesitas."</p>
+      <p>Catálogos Estilo nació para acompañarte en cada campaña de Oriflame, Natura, Ésika y Leonisa: te mostramos lo que tenemos en stock y lo que viene en el catálogo, para que elijas con calma y recibas justo lo que buscabas.</p>
     </div>
     <div class="credits-box">
-      <span class="eyebrow">Ficha técnica</span>
-      <div class="credits-row"><span>Curaduría</span><span>Equipo Kiosco</span></div>
-      <div class="credits-row"><span>Estado de las ediciones</span><span>Nuevo / muy buen estado</span></div>
-      <div class="credits-row"><span>Envíos</span><span>A todo el país</span></div>
-      <div class="credits-row"><span>Reposición</span><span>Semanal</span></div>
+      <span class="eyebrow">Cómo trabajamos</span>
+      <div class="credits-row"><span>Marcas</span><span>Oriflame · Natura · Ésika · Leonisa</span></div>
+      <div class="credits-row"><span>Stock</span><span>Entrega inmediata</span></div>
+      <div class="credits-row"><span>Reservas</span><span>Según campaña</span></div>
+      <div class="credits-row"><span>Envíos</span><span>Colombia</span></div>
     </div>
   </section>
 
 </main>
 
-<!-- ============ FOOTER / CONTRAPORTADA ============ -->
+<!-- ============ FOOTER ============ -->
 <footer class="back-cover" id="contacto">
   <div class="wrap">
     <div class="back-cover-top">
       <div>
-        <span class="eyebrow">Contraportada</span>
-        <h2>Tu próxima lectura<br>de belleza te espera.</h2>
-        <p>Seguinos en Instagram para ver las novedades apenas llegan, o escribinos directo para reservar tu edición.</p>
-        <a class="btn btn-primary" href="https://instagram.com/kiosco.belleza" target="_blank" rel="noopener">@kiosco.belleza</a>
+        <span class="eyebrow">Contacto</span>
+        <h2>Tu próxima campaña<br>favorita está a un mensaje.</h2>
+        <p>Síguenos en Instagram para ver las novedades de cada campaña, o escríbenos directo para hacer tu pedido o reserva.</p>
+        <a class="btn btn-primary" href="https://www.instagram.com/catalogosestilo/" target="_blank" rel="noopener">@catalogosestilo</a>
       </div>
       <div class="footer-panel">
         <span class="eyebrow">Contacto</span>
-        <div class="credits-row"><span>Instagram</span><span>@kiosco.belleza</span></div>
-        <div class="credits-row"><span>WhatsApp</span><span>+54 9 00 0000-0000</span></div>
-        <div class="credits-row"><span>Horario de atención</span><span>Lun a Sáb, 10 a 19h</span></div>
+        <div class="credits-row"><span>Instagram</span><span>@catalogosestilo</span></div>
+        <div class="credits-row"><span>WhatsApp</span><span>+57 300 000 0000</span></div>
+        <div class="credits-row"><span>Horario de atención</span><span>Lun a Sáb, 9 a 19h</span></div>
       </div>
     </div>
     <div class="footer-bottom">
@@ -771,7 +766,7 @@
           <span style="height:12px"></span><span style="height:24px"></span><span style="height:18px"></span>
         </div>
       </div>
-      <span>© 2026 Kiosco Belleza · Hecho con papel, tinta y buen gusto.</span>
+      <span>© 2026 Catálogos Estilo · Oriflame · Natura · Ésika · Leonisa</span>
     </div>
   </div>
 </footer>
@@ -780,14 +775,8 @@
   const toggle = document.getElementById('nav-toggle');
   const mobileNav = document.getElementById('mobile-nav');
   toggle.addEventListener('click', () => {
-    const isOpen = !mobileNav.hasAttribute('hidden');
-    if (isOpen) {
-      mobileNav.setAttribute('hidden', '');
-      toggle.setAttribute('aria-expanded', 'false');
-    } else {
-      mobileNav.removeAttribute('hidden');
-      toggle.setAttribute('aria-expanded', 'true');
-    }
+    const isOpen = mobileNav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
 </script>
 
