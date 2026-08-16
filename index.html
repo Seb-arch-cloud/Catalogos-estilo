@@ -166,12 +166,26 @@
     max-width:var(--max);
     margin:28px auto 0;
     padding:0 24px 48px;
-  }
   .cover-frame{
-    border:1px solid var(--ink);
-    padding:22px 26px 32px;
-    position:relative;
-  }
+  background:#2A0010;
+  border-color:#2A0010;
+}
+.cover-frame .masthead,
+.cover-frame .cover-line{
+  color:#FAF6F2;
+}
+.cover-frame .cover-top,
+.cover-frame .cover-tagline,
+.cover-frame .barcode-label{
+  color:#E9D2D8;
+}
+.cover-frame .cover-top,
+.cover-frame .cover-bottom{
+  border-color:rgba(250,246,242,0.2);
+}
+.cover-frame .barcode span{
+  background:#FAF6F2;
+}
   .cover-top{
     display:flex;
     justify-content:space-between;
